@@ -11,7 +11,7 @@ use Spatie\Translatable\HasTranslations;
 class Classroom extends Model
 {
     use HasFactory;
-
+    protected $guarded=[];
     
     //للترجمة عمود واحد
     use HasTranslations;

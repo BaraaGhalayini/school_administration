@@ -2,7 +2,7 @@
 
 return [
 
-
+    'name_grade' => 'Name Grade',
     'name_ar' => 'Name_ar',
     'name_en' => 'Name_en',
     'note' => 'Note',

@@ -8,8 +8,7 @@
             <thead>
             <tr class="table-success">
                 <th>#</th>
-                <th>{{ trans('grade_trans.name_ar') }}</th>
-                <th>{{ trans('grade_trans.name_en') }}</th>
+                <th>{{ trans('grade_trans.name_grade') }}</th>
                 <th>{{ trans('grade_trans.note') }}</th>
                 <th>{{ trans('main_trans.Processes') }}</th>
             </tr>
@@ -20,8 +19,7 @@
                 <tr>
                     <?php $i++; ?>
                     <td>{{ $i }}</td>
-                    <td>{{ $grade->name_ar }}</td>
-                    <td>{{ $grade->name_en }}</td>
+                    <td>{{ $grade->Name_Grade }}</td>
                     <td>{{ $grade->note }}</td>
 
                     <td>

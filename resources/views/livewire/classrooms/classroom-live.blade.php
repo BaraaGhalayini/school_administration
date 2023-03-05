@@ -9,7 +9,7 @@
             <tr class="table-success">
                 <th>#</th>
                 <th>{{ trans('classroom_trans.Name_Class') }}</th>
-                <th>{{ trans('classroom_trans.Grade') }}</th>
+                <th>{{ trans('classroom_trans.grade_name') }}</th>
                 <th>{{ trans('main_trans.Processes') }}</th>
             </tr>
             </thead>

@@ -13,6 +13,8 @@ class ClassroomLive extends Component
     public $show_table = true ,
     $Name_Class,
     $classroom_id,
+    $classrooms_ar,
+    $classrooms_en,
     $Grade_id,
     $updateMode = false;
 
@@ -30,8 +32,9 @@ class ClassroomLive extends Component
     {
         // $this->validateOnly($propertyName);
 
-        $this->validateOnly($propertyName, [
-            'Name_Class' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms',
+        $this->validateOnly($propertyName, [ 
+            'classrooms_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms,Name_Class->ar',
+            'classrooms_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:classrooms,Name_Class->en',
             'Grade_id' => 'required|unique:classrooms',
         ]);
     }
@@ -49,12 +52,16 @@ class ClassroomLive extends Component
 
         try{
             $this->validate([
-                'Name_Class' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms',
+                'classrooms_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms,Name_Class->ar',
+                'classrooms_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:classrooms,Name_Class->en',
                 'Grade_id' => 'required|unique:classrooms',
             ]);
 
             Classroom::create([
-                'Name_Class' => $this->Name_Class,
+                'Name_Class' => [
+                    'ar' => $this->classrooms_ar,
+                    'en' => $this->classrooms_en,
+                ],
                 'Grade_id' => $this->Grade_id,
             ]);
 
@@ -77,9 +84,9 @@ class ClassroomLive extends Component
 
             $classrooms = Classroom::where('id',$id)->first();
 
-            // $this->Name_Class = $classrooms->getTranslation('Name_Class', 'ar');
-            // $this->classroom_id = $classrooms->getTranslation('classroom_id', 'en');
-            $this->Name_Class = $classrooms->Name_Class;
+            $this->classrooms_ar = $classrooms->getTranslation('Name_Class', 'ar');
+            $this->classrooms_en = $classrooms->getTranslation('Name_Class', 'en');
+            
             $this->Grade_id = $classrooms->Grade_id;
         }
 
@@ -88,7 +95,7 @@ class ClassroomLive extends Component
         };
 
     }
-    
+
 
 
     public function Submit_edit()
@@ -99,16 +106,22 @@ class ClassroomLive extends Component
 
             if ($id){
                 $this->validate([
-                    'Name_Class' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms,Name_Class,'.$id,
-                    'Grade_id' => 'required|unique:classrooms,classroom_id,'.$id,
+                    'classrooms_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms,Name_Class->ar'.$id,
+                    'classrooms_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:classrooms,Name_Class->en'.$id,
+
+                    'Grade_id' => 'required|unique:classrooms,Grade_id,'.$id,
                 ]);
 
                 $classrooms = Classroom::find($id);
 
                 $classrooms->update([
-                    'Name_Class' => $this->Name_Class,
+                    'Name_Class' => [
+                        'ar' => $this->classrooms_ar,
+                        'en' => $this->classrooms_en,
+                    ],
                     'Grade_id' => $this->Grade_id,
                 ]);
+
 
                 session()->flash('edit', trans('main_trans.edit_alert'));
                 return redirect('/classrooms');
@@ -128,9 +141,6 @@ class ClassroomLive extends Component
         session()->flash('delete', trans('main_trans.delete_alert'));
         return redirect('/classrooms');
 
-
-
-    
     }
 
 }

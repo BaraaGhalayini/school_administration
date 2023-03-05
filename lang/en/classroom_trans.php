@@ -5,7 +5,12 @@ return [
     'classrooms' => 'Classrooms',
     
     'Name_Class' => 'Name Class',
-    'Grade' => 'Grade',
+
+    'classrooms_ar' => 'Classrooms_ar',
+    'classrooms_en' => 'Classrooms_en', 
+
+
+    'grade_name' => 'Grade Name',
     'note' => 'Note',
     'add_classroom' => 'Add Classroom',
     'edit_classroom' => 'Edit Classroom',
