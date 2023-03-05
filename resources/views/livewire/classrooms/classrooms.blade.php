@@ -5,20 +5,22 @@
 
 
 @section('title')
-    empty
+    {{ trans('classroom_trans.classrooms') }}
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
+@include ('layouts.alert')
+
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0"> ncvlxcnvxcnvxcv</h4>
+            <h4 class="mb-0"> {{ trans('classroom_trans.classrooms') }}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">Home</a></li>
-                <li class="breadcrumb-item active">Page Title</li>
+                <li class="breadcrumb-item"><a href="{{ route('Home') }}" class="default-color">{{ trans('main_trans.Home') }} </a></li>
+                <li class="breadcrumb-item active">{{ trans('classroom_trans.classrooms') }}</li>
             </ol>
         </div>
     </div>
@@ -32,8 +34,8 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 
-                {{-- <livewire:my_classes />  --}}
-                @livewire('grade-live')
+                {{-- <livewire:classroom-live />  --}}
+                @livewire('classroom-live')
 
             </div>
         </div>

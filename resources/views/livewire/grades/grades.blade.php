@@ -5,7 +5,7 @@
 
 
 @section('title')
-    empty
+    {{ trans('grade_trans.school_grade') }}
 @stop
 @endsection
 @section('page-header')
@@ -19,7 +19,7 @@
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('main_trans.Home') }} </a></li>
+                <li class="breadcrumb-item"><a href="{{ route('Home') }}" class="default-color">{{ trans('main_trans.Home') }} </a></li>
                 <li class="breadcrumb-item active">{{ trans('grade_trans.school_grade') }}</li>
             </ol>
         </div>

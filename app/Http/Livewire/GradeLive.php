@@ -6,6 +6,9 @@ use App\Models\Grade;
 
 use Livewire\Component;
 
+
+
+
 class GradeLive extends Component
 {   
 
@@ -29,13 +32,10 @@ class GradeLive extends Component
         // $this->validateOnly($propertyName);
 
         $this->validateOnly($propertyName, [
-            'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades',
-            'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades',
+            'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar',
+            'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,Name_Grade->en',
         ]);
     }
-
-
-
 
     public function showformadd()
     {
@@ -50,15 +50,26 @@ class GradeLive extends Component
 
         try{
             $this->validate([
-                'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades',
-                'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades',
+
+                
+                'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar',
+                'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,Name_Grade->en',
             ]);
 
+            // Grade::create([
+            //     'name_ar' => $this->name_ar,
+            //     'name_en' => $this->name_en,
+            // ]);
+
+
             Grade::create([
-                'name_ar' => $this->name_ar,
-                'name_en' => $this->name_en,
+                'Name_Grade' => [
+                    'ar' => $this->name_ar,
+                    'en' => $this->name_en,
+                ],
                 'note' => $this->note,
             ]);
+
 
             session()->flash('add', trans('main_trans.add_alert'));
             return redirect('/grades');
@@ -79,10 +90,11 @@ class GradeLive extends Component
 
             $grade = Grade::where('id',$id)->first();
 
-            // $this->name_ar = $grade->getTranslation('name_ar', 'ar');
-            // $this->name_en = $grade->getTranslation('name_en', 'en');
-            $this->name_ar = $grade->name_ar;
-            $this->name_en = $grade->name_en;
+            $this->name_ar = $grade->getTranslation('Name_Grade', 'ar');
+            $this->name_en = $grade->getTranslation('Name_Grade', 'en');
+            // $this->name_ar = $grade->name_ar;
+            // $this->name_en = $grade->name_en;
+
             $this->note = $grade->note;
         }
 
@@ -102,15 +114,18 @@ class GradeLive extends Component
 
             if ($id){
                 $this->validate([
-                    'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,name_ar,'.$id,
-                    'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,name_en,'.$id,
+
+                    'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar,'.$id,
+                    'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,Name_Grade->en,'.$id,
                 ]);
 
                 $Grade = Grade::find($id);
 
                 $Grade->update([
-                    'name_ar' => $this->name_ar,
-                    'name_en' => $this->name_en,
+                    'Name_Grade' => [
+                        'ar' => $this->name_ar,
+                        'en' => $this->name_en,
+                    ],
                     'note' => $this->note,
                 ]);
 

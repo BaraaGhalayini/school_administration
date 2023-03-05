@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\GradeController;
 use Illuminate\Support\Facades\DB;
 
 
@@ -24,20 +23,16 @@ Route::group(
     ], function(){
 
 
-
         Route::get('/', function () {
             return view('dashboard');
         })->name('Home');
 
 
-        // Route::resource('grades', GradeController::class );
-
-
         Route::view('showclasses', 'livewire.ShowClasses' );
 
-        Route::view('grades', 'livewire.grades.grades')->name('Grades');;
+        Route::view('grades', 'livewire.grades.grades')->name('Grades');
 
-
+        Route::view('classrooms', 'livewire.classrooms.classrooms')->name('Classrooms');
 
 
         Route::get('/testing', function () {

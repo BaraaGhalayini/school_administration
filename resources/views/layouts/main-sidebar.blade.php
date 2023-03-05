@@ -15,10 +15,9 @@
                         <a href="{{ route('Grades') }}"><i class="ti-palette"></i><span class="right-nav-text">{{ trans('main_trans.Grades') }}</span> </a>
                     </li>
 
-
                     <!-- menu item calendar-->
                     <li>
-                        <a href="todo-list.html"><i class="ti-calendar"></i><span class="right-nav-text">{{ trans('main_trans.Dashboard') }}</span> </a>
+                        <a href="{{ route('Classrooms') }}"><i class="ti-calendar"></i><span class="right-nav-text">{{ trans('main_trans.Classrooms') }}</span> </a>
                     </li>
 
                     <!-- menu item todo-->

@@ -5,26 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Classroom;
+use App\Models\Grade;
 use Spatie\Translatable\HasTranslations;
 
-class Grade extends Model
+class Classroom extends Model
 {
     use HasFactory;
-
-    protected $guarded=[];
 
     
     //للترجمة عمود واحد
     use HasTranslations;
 
-    public $translatable = ['Name_Grade'];
-
-
-    // public function classroom(): HasMany
-    // {
-    //     return $this->hasMany(Comment::class, 'foreign_key', 'local_key');
-    // }
+    public $translatable = ['Name_Class'];
 
     
+    public function grade(): BelongsTo
+    {
+        return $this->belongsTo(Grade::class, 'Grade_id', 'id');
+    }
 }
