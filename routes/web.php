@@ -34,6 +34,8 @@ Route::group(
 
         Route::view('classrooms', 'livewire.classrooms.classrooms')->name('Classrooms');
 
+        Route::view('sections', 'livewire.sections.sections')->name('Sections');
+
 
         Route::get('/testing', function () {
 
@@ -43,7 +45,7 @@ Route::group(
             return print($users);
         });
 
-        
+
 });
 
 

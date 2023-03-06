@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 use App\Models\Classroom;
-use Spatie\Translatable\HasTranslations;
+use App\Models\Section;
+
 
 class Grade extends Model
 {
@@ -21,10 +23,16 @@ class Grade extends Model
     public $translatable = ['Name_Grade'];
 
 
-    // public function classroom(): HasMany
-    // {
-    //     return $this->hasMany(Comment::class, 'foreign_key', 'local_key');
-    // }
+    public function classroom(): HasMany
+    {
+        return $this->hasMany(Classroom::class, 'Grade_id', 'id');
+    }
 
+
+
+    public function Sections(): HasMany
+    {
+        return $this->hasMany(Section::class, 'Grade_id', 'id');
+    }
     
 }
