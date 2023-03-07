@@ -12,6 +12,13 @@ return [
 
     'school_section' => 'School section',
 
+    'Status_Section_AC' => 'School section',
+    
+    'section' => 'Section',
+
+    'Status_Section_AC'=>'Active',
+    'Status_Section_No'=>'Not Active',
+
     'Select_Grade' => 'Select Grade',
     'Select_Class' => 'Select Classrooms',
     'Status' => 'Status',

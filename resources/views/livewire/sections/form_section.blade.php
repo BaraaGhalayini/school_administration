@@ -38,33 +38,40 @@
                         <!--placeholder-->
                         <option value="" selected >{{ trans('section_trans.Select_Class') }}</option>
                         @foreach ($classrooms as $classroom) 
-                            <option value="{{ $classroom->id }}">{{ $classroom->Name_Class }}</option>
+                        <option value="{{ $classroom->id }}">{{ $classroom->Name_Class }}</option>
                         @endforeach
+                        <option value=""></option>
                     </select>
                     @error('name_class')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                @if($updateMode)
-                <div class="form-check">
-                    @if ($$grade->Sections->Status === 1)
-                        <input
-                            type="checkbox"
-                            checked
-                            class="form-check-input"
-                            name="Status"
-                            id="exampleCheck1">
-                    @else
-                        <input
-                            type="checkbox"
-                            class="form-check-input"
-                            name="Status"
-                            id="exampleCheck1">
-                    @endif
-                    <label class="form-check-label" for="exampleCheck1">{{ trans('Sections_trans.Status') }}</label>
+            </div>
+            @if($updateMode)
+                <div class="form-row">
+                    <div class="col">
+                        @if ($Status === 1)
+                            <input
+                                type="checkbox"
+                                checked
+                                class="form-check-input"
+                                wire:model.lazy="Status"
+                                value="1"
+                                id="exampleCheck1">
+                                
+                        @else
+                            <input
+                                type="checkbox"
+                                class="form-check-input"
+                                wire:model.lazy="Status"
+                                value="2"
+                                id="exampleCheck1">
+                        @endif
+                        <label class="form-check-label" for="exampleCheck1">{{ trans('section_trans.Status_Section_AC') }}</label>
+
+                    </div>
                 </div>
                 @endif
-            </div>
             <br>
             <div  class="form-row">
                 <div class="col">

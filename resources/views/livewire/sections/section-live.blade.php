@@ -42,10 +42,10 @@
                                                             <td>
                                                                 @if (@$list_Sections->Status === 1)
                                                                     <label
-                                                                        class="badge badge-success">{{ trans('Sections_trans.Status_Section_AC') }}</label>
+                                                                        class="badge badge-success">{{ trans('section_trans.Status_Section_AC') }}</label>
                                                                 @else
                                                                     <label
-                                                                        class="badge badge-danger">{{ trans('Sections_trans.Status_Section_No') }}</label>
+                                                                        class="badge badge-danger">{{ trans('section_trans.Status_Section_No') }}</label>
                                                                 @endif
 
                                                             </td>

@@ -11,7 +11,8 @@ return [
     'delete_section' => 'حذف القسم',
     
     'section' => 'الأقسام',
-    
+    'Status_Section_AC'=>'نشط',
+    'Status_Section_No'=>'غير نشط',
     'Status' => 'الحالة',
 
     'Select_Grade' => 'اختيار المرحلة',

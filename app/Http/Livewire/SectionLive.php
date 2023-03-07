@@ -14,6 +14,7 @@ class SectionLive extends Component
     public $show_table = true ,
     $Grades = [1 ,2 ,3],
     $Status_Defulte = 1,
+    $Status,
     $name_ar,
     $name_en,
     $name_grade,
@@ -98,14 +99,15 @@ class SectionLive extends Component
             $this->updateMode = true;
 
             $section = Section::where('id',$id)->first();
-
+            
             $this->name_ar = $section->getTranslation('Name_Section', 'ar');
             $this->name_en = $section->getTranslation('Name_Section', 'en');
             // $this->name_ar = $section->name_ar;
             // $this->name_en = $section->name_en;
 
-            $this->name_grade = $section->name_grade;
-            $this->name_class = $section->name_class;
+            $this->name_grade = $section->Grade_id;
+            $this->name_class = $section->Class_id;
+            $this->Status = $section->Status;
 
 
         }
@@ -129,11 +131,23 @@ class SectionLive extends Component
 
                     'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Sections,Name_Section->ar,'.$id,
                     'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en,'.$id,
-                    'name_grade' => 'required,'.$id,
-                    'name_class' => 'required,'.$id,
+                    'name_grade' => 'required',
+                    'name_class' => 'required',
                 ]);
 
                 $section = Section::find($id);
+
+                // $Status = $this->Status;
+
+                // $Status = 1 ? 1 : 2;
+
+                if ($this->Status === 1) {
+                    $Status = 1 ;
+                }else{
+
+                    $Status = 2 ;
+                }
+
 
                 $section->update([
                     'Name_Section' => [
@@ -142,7 +156,7 @@ class SectionLive extends Component
                     ],
                     'Grade_id' => $this->name_grade,
                     'Class_id' => $this->name_class,
-                    'Status' => $this->Status,
+                    'Status' => $Status,
                 ]);
 
                 session()->flash('edit', trans('main_trans.edit_alert'));
