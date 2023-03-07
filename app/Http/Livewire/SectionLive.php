@@ -6,24 +6,29 @@ use Livewire\Component;
 
 use App\Models\Section;
 use App\Models\Grade;
+use App\Models\Classroom;
 
 class SectionLive extends Component
 {
 
     public $show_table = true ,
     $Grades = [1 ,2 ,3],
+    $Status_Defulte = 1,
     $name_ar,
     $name_en,
-    $note,
+    $name_grade,
+    $name_class,
     $section,
     $updateMode = false;
 
 
     public function render()
     {   
-        $sections = Section::all();
-        $grades = Grade::all();
-        return view('livewire.sections.section-live', compact('sections','grades') );
+        $grades = Grade::with(['Sections'])->get();
+        $list_Grades = Grade::all();
+        $classrooms = Classroom::all();
+
+        return view('livewire.sections.section-live', compact('grades','list_Grades','classrooms') );
     }
 
 
@@ -34,6 +39,10 @@ class SectionLive extends Component
         $this->validateOnly($propertyName, [
             'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Sections,Name_Section->ar',
             'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en',
+            'name_grade' => 'required',
+            'name_class' => 'required',
+
+            
         ]);
     }
 
@@ -51,15 +60,11 @@ class SectionLive extends Component
         try{
             $this->validate([
 
-                
                 'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Sections,Name_Section->ar',
                 'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en',
+                'name_grade' => 'required',
+                'name_class' => 'required',
             ]);
-
-            // Section::create([
-            //     'name_ar' => $this->name_ar,
-            //     'name_en' => $this->name_en,
-            // ]);
 
 
             Section::create([
@@ -67,12 +72,14 @@ class SectionLive extends Component
                     'ar' => $this->name_ar,
                     'en' => $this->name_en,
                 ],
-                'note' => $this->note,
+                'Grade_id' => $this->name_grade,
+                'Class_id' => $this->name_class,
+                'Status' => $this->Status_Defulte,
             ]);
 
 
             session()->flash('add', trans('main_trans.add_alert'));
-            return redirect('/Sections');
+            return redirect()->route('Sections');
         }
 
         catch (\Exception $e) {
@@ -83,19 +90,24 @@ class SectionLive extends Component
 
     public function showformedit($id)
     {
+
+        
         try{
             $this->section_id = $id;
             $this->show_table = false;
             $this->updateMode = true;
 
-            $grade = Section::where('id',$id)->first();
+            $section = Section::where('id',$id)->first();
 
-            $this->name_ar = $grade->getTranslation('Name_Section', 'ar');
-            $this->name_en = $grade->getTranslation('Name_Section', 'en');
-            // $this->name_ar = $grade->name_ar;
-            // $this->name_en = $grade->name_en;
+            $this->name_ar = $section->getTranslation('Name_Section', 'ar');
+            $this->name_en = $section->getTranslation('Name_Section', 'en');
+            // $this->name_ar = $section->name_ar;
+            // $this->name_en = $section->name_en;
 
-            $this->note = $grade->note;
+            $this->name_grade = $section->name_grade;
+            $this->name_class = $section->name_class;
+
+
         }
 
         catch (\Exception $e) {
@@ -108,7 +120,7 @@ class SectionLive extends Component
 
     public function Submit_edit()
     {
-
+        
         try{
             $id = $this->section_id;
 
@@ -117,20 +129,24 @@ class SectionLive extends Component
 
                     'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Sections,Name_Section->ar,'.$id,
                     'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en,'.$id,
+                    'name_grade' => 'required,'.$id,
+                    'name_class' => 'required,'.$id,
                 ]);
 
-                $Grade = Section::find($id);
+                $section = Section::find($id);
 
-                $Grade->update([
+                $section->update([
                     'Name_Section' => [
                         'ar' => $this->name_ar,
                         'en' => $this->name_en,
                     ],
-                    'note' => $this->note,
+                    'Grade_id' => $this->name_grade,
+                    'Class_id' => $this->name_class,
+                    'Status' => $this->Status,
                 ]);
 
                 session()->flash('edit', trans('main_trans.edit_alert'));
-                return redirect('/Sections');
+                return redirect()->route('Sections');
             }        
         }
 
@@ -145,7 +161,7 @@ class SectionLive extends Component
         
         Section::findOrFail($id)->delete();
         session()->flash('delete', trans('main_trans.delete_alert'));
-        return redirect('/Sections');
+        return redirect()->route('Sections');
 
 
 

@@ -22,7 +22,7 @@
 
                     <!-- menu item todo-->
                     <li>
-                        <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ trans('main_trans.Dashboard') }}</span> </a>
+                        <a href="{{ route('Sections') }}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ trans('main_trans.Sections') }}</span> </a>
                     </li>
                     <!-- menu item chat-->
                     <li>

@@ -18,8 +18,14 @@
                     @enderror
                 </div>
                 <div class="col">
-                    <label for="title">{{trans('classroom_trans.grade_name')}}</label>
-                    <input type="text" wire:model="Grade_id" class="form-control" >
+                    <label for="Grade_id" class="control-label">{{ trans('classroom_trans.grade_name') }}</label>
+                    <select wire:model="Grade_id" class="custom-select" onchange="console.log($(this).val())">
+                        <!--placeholder-->
+                        <option value="" selected >{{ trans('section_trans.Select_Grade') }}</option>
+                        @foreach ($grades as $grade)
+                            <option value="{{ $grade->id }}">{{ $grade->Name_Grade }}</option>
+                        @endforeach
+                    </select>
                     @error('Grade_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

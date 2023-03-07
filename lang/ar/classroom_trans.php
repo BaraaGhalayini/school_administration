@@ -9,6 +9,7 @@ return [
     'classrooms_en' => 'اسم الفصل بالإنجليزية',
     'Name_Class' => 'اسم الفصل',
 
+    'Select_Grade' => 'اختار المرحلة', 
 
     'grade_name' => 'المرحلة الدراسية',
     'note' => 'ملاحظات',

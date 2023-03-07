@@ -9,6 +9,7 @@ use Spatie\Translatable\HasTranslations;
 use App\Models\Classroom;
 use App\Models\Section;
 
+use Illuminate\Database\Eloquent\Relations\HasMany ;
 
 class Grade extends Model
 {
@@ -21,13 +22,6 @@ class Grade extends Model
     use HasTranslations;
 
     public $translatable = ['Name_Grade'];
-
-
-    public function classroom(): HasMany
-    {
-        return $this->hasMany(Classroom::class, 'Grade_id', 'id');
-    }
-
 
 
     public function Sections(): HasMany

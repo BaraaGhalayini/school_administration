@@ -9,6 +9,8 @@ return [
     'classrooms_ar' => 'Classrooms_ar',
     'classrooms_en' => 'Classrooms_en', 
 
+    'Select_Grade' => 'Select Grade', 
+
 
     'grade_name' => 'Grade Name',
     'note' => 'Note',

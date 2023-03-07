@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Grade;
 use Spatie\Translatable\HasTranslations;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo ;
+
+
+
 class Classroom extends Model
 {
     use HasFactory;
@@ -18,9 +22,10 @@ class Classroom extends Model
 
     public $translatable = ['Name_Class'];
 
-    
-    public function grade(): BelongsTo
+
+    public function Grades(): BelongsTo
     {
         return $this->belongsTo(Grade::class, 'Grade_id', 'id');
     }
+
 }

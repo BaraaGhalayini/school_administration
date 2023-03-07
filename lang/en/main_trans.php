@@ -6,6 +6,7 @@ return [
     'Dashboard' => 'Dashboard',
     'Processes' => 'Processes',
     'classrooms' => 'Classrooms',
+    'Sections' => 'Sections',
 
     'add_alert' => 'Addition completed successfully',
     'edit_alert' => 'The modification was completed successfully',

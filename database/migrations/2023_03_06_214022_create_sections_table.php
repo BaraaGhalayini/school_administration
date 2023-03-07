@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('Name_Section');
             $table->integer('Status');
             $table->bigInteger('Grade_id')->unsigned();
+            $table->foreign('Grade_id')->references('id')->on('Grades')->onDelete('cascade');
             $table->bigInteger('Class_id')->unsigned();
+            $table->foreign('Class_id')->references('id')->on('classrooms')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

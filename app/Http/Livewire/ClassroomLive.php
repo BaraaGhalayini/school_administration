@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 
 use App\Models\Classroom;
+use App\Models\Grade;
 
 
 class ClassroomLive extends Component
@@ -23,8 +24,9 @@ class ClassroomLive extends Component
     public function render()
     {    
         $classrooms = Classroom::all();
+        $grades = Grade::all();
 
-        return view('livewire.classrooms.classroom-live', compact('classrooms') );
+        return view('livewire.classrooms.classroom-live', compact('classrooms' ,'grades') );
     }
 
     
@@ -35,7 +37,7 @@ class ClassroomLive extends Component
         $this->validateOnly($propertyName, [ 
             'classrooms_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms,Name_Class->ar',
             'classrooms_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:classrooms,Name_Class->en',
-            'Grade_id' => 'required|unique:classrooms',
+            'Grade_id' => 'required',
         ]);
     }
 
@@ -54,7 +56,7 @@ class ClassroomLive extends Component
             $this->validate([
                 'classrooms_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms,Name_Class->ar',
                 'classrooms_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:classrooms,Name_Class->en',
-                'Grade_id' => 'required|unique:classrooms',
+                'Grade_id' => 'required',
             ]);
 
             Classroom::create([
@@ -109,7 +111,7 @@ class ClassroomLive extends Component
                     'classrooms_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:classrooms,Name_Class->ar'.$id,
                     'classrooms_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:classrooms,Name_Class->en'.$id,
 
-                    'Grade_id' => 'required|unique:classrooms,Grade_id,'.$id,
+                    'Grade_id' => 'required',
                 ]);
 
                 $classrooms = Classroom::find($id);

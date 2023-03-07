@@ -20,7 +20,7 @@
                     <?php $i++; ?>
                     <td>{{ $i }}</td>
                     <td>{{ $classroom->Name_Class }}</td>
-                    <td>{{ $classroom->Grade_id }}</td>
+                    <td>{{ $classroom->Grades->Name_Grade }}</td>
 
                     <td>
                         <button wire:click="showformedit({{ $classroom->id }})" title="{{ trans('main_trans.edit') }}"

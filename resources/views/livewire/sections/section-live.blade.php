@@ -31,12 +31,13 @@
                                                     </thead>
                                                     <tbody>
                                                     <?php $i = 0; ?>
-                                                    {{-- {{-- @foreach (@$grade->Sections as $list_Sections) --}}
+                                                    @foreach ($grade->Sections as $list_Sections)
                                                         <tr>
+                                                            
                                                             <?php $i++; ?>
                                                             <td>{{ $i }}</td>
-                                                            <td>{{ @$list_Sections->Name_Section }} </td>
-                                                            <td>{{ @$list_Sections->My_classs->Name_Class }} 
+                                                            <td>{{ $list_Sections->Name_Section }} </td>
+                                                            <td>{{ $list_Sections->Classrooms->Name_Class }} 
                                                             </td>
                                                             <td>
                                                                 @if (@$list_Sections->Status === 1)
@@ -50,16 +51,16 @@
                                                             </td>
 
                                                             <td>
-                                                                <button wire:click="showformedit({{ @$list_Sections->id }})" title="{{ trans('main_trans.edit') }}"
+                                                                <button wire:click="showformedit({{ $list_Sections->id }})" title="{{ trans('main_trans.edit') }}"
                                                                         class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
                                                                 </button>
-                                                                <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ @$list_Sections->id }})" title="{{ trans('main_trans.delete') }}">
+                                                                <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $list_Sections->id }})" title="{{ trans('main_trans.delete') }}">
                                                                     <i class="fa fa-trash"></i>
                                                                 </button>
                                                             </td>
                                                         </tr>
 
-                                                    {{-- @endforeach --}} 
+                                                    @endforeach 
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -73,13 +74,16 @@
             </div>
         </div>
     </div>
-
+</div>
+</div>
 
 @else
-    
+
     @include('livewire.sections.form_section')
 
 @endif
 
 
+
 </div>
+
