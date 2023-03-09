@@ -6,14 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('nationalities', function (Blueprint $table) {
+        Schema::create('genders', function (Blueprint $table) {
             $table->id();
             $table->string('Name');
             $table->timestamps();
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nationalities');
+        Schema::dropIfExists('genders');
     }
 };
