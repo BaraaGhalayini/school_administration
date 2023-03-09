@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        $this->call( specializationTableSeeders::class);
+        $this->call( ReligionSeeder::class);
+        $this->call( SpecializationTableSeeder::class);
         
     }
 }
