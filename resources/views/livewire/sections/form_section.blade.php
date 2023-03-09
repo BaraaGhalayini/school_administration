@@ -20,7 +20,7 @@
             </div>
             <div class="form-row">
                 <div class="col">
-                    <label for="title" class="control-label">{{ trans('grade_trans.name_grade') }}</label>
+                    <label for="name_grade" class="control-label">{{ trans('grade_trans.name_grade') }}</label>
                     <select wire:model.lazy="name_grade" class="custom-select" onchange="">
                         <!--placeholder-->
                         <option value="" selected >{{ trans('section_trans.Select_Grade') }}</option>
@@ -33,14 +33,13 @@
                     @enderror
                 </div>
                 <div class="col">
-                    <label for="title" class="control-label">{{ trans('classroom_trans.Name_Class') }}</label>
-                    <select wire:model.lazy="name_class" class="custom-select" onchange="">
+                    <label for="name_class" class="control-label">{{ trans('classroom_trans.Name_Class') }}</label>
+                    <select wire:model.lazy="name_class" name="name_class" class="custom-select" onchange="">
                         <!--placeholder-->
                         <option value="" selected >{{ trans('section_trans.Select_Class') }}</option>
                         @foreach ($classrooms as $classroom) 
                         <option value="{{ $classroom->id }}">{{ $classroom->Name_Class }}</option>
                         @endforeach
-                        <option value=""></option>
                     </select>
                     @error('name_class')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -57,7 +56,7 @@
                                 class="form-check-input"
                                 wire:model.lazy="Status"
                                 value="1"
-                                id="exampleCheck1">
+                                id="status_check">
                                 
                         @else
                             <input
@@ -65,9 +64,9 @@
                                 class="form-check-input"
                                 wire:model.lazy="Status"
                                 value="2"
-                                id="exampleCheck1">
+                                id="status_check">
                         @endif
-                        <label class="form-check-label" for="exampleCheck1">{{ trans('section_trans.Status_Section_AC') }}</label>
+                        <label class="form-check-label" for="status_check">{{ trans('section_trans.Status_Section_AC') }}</label>
 
                     </div>
                 </div>

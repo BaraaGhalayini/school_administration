@@ -19,19 +19,33 @@ class SectionLive extends Component
     $name_en,
     $name_grade,
     $name_class,
+    $classrooms,
     $section,
     $updateMode = false;
 
 
+    
     public function render()
     {   
         $grades = Grade::with(['Sections'])->get();
         $list_Grades = Grade::all();
-        $classrooms = Classroom::all();
+        // $classrooms = Classroom::all();
 
-        return view('livewire.sections.section-live', compact('grades','list_Grades','classrooms') );
+        return view('livewire.sections.section-live', compact('grades','list_Grades') );
     }
 
+
+    
+
+    public function mount()
+    {
+        if ($this->name_grade !='') {
+            $this->classrooms = Classroom::where('Grade_id', $this->name_grade)->get();
+        }else{
+
+            $this->classrooms = [];
+        }
+    }
 
     public function updated($propertyName)
     {
@@ -45,6 +59,16 @@ class SectionLive extends Component
 
             
         ]);
+
+        // if ($this->check('status_check')){
+
+        //     $Status === 1;
+        // }   
+
+        
+
+        $this->classrooms = Classroom::where('Grade_id', $this->name_grade)->get();
+        // dd('?');
     }
 
     public function showformadd()
@@ -177,8 +201,15 @@ class SectionLive extends Component
         session()->flash('delete', trans('main_trans.delete_alert'));
         return redirect()->route('Sections');
 
-
-
-    
     }
+
+
+
+
+
+
+
+
+
+
 }
