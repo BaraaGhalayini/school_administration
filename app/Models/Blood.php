@@ -8,9 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Blood extends Model
 {
     use HasFactory;
-
-    use HasTranslations;
-
-    public $translatable = ['Name'];
-    
 }

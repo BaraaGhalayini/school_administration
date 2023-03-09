@@ -6,12 +6,14 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use DB;
 
+use App\Models\Specialization;
+
 class SpecializationTableSeeder extends Seeder
 {
 
     public function run()
     {
-        DB::table('specialization')->delete();
+        DB::table('specializations')->delete();
 
         $specializations =[
             [ 'en' => 'Arabic' ,'ar' => 'عربي' ],
