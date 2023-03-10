@@ -10,6 +10,7 @@ class Gender extends Model
     use HasFactory;
 
     use HasTranslations;
-
     public $translatable = ['Name'];
+
+    
 }

@@ -61,7 +61,6 @@ class GradeLive extends Component
             //     'name_en' => $this->name_en,
             // ]);
 
-
             Grade::create([
                 'Name_Grade' => [
                     'ar' => $this->name_ar,
@@ -103,7 +102,7 @@ class GradeLive extends Component
         };
 
     }
-    
+
 
 
     public function Submit_edit()

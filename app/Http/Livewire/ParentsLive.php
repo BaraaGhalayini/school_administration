@@ -10,4 +10,5 @@ class ParentsLive extends Component
     {
         return view('livewire.parents-live');
     }
+
 }

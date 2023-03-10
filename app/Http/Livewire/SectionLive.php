@@ -24,7 +24,7 @@ class SectionLive extends Component
     $updateMode = false;
 
 
-    
+
     public function render()
     {   
         $grades = Grade::with(['Sections'])->get();
@@ -35,7 +35,7 @@ class SectionLive extends Component
     }
 
 
-    
+
 
     public function mount()
     {
@@ -74,7 +74,7 @@ class SectionLive extends Component
     public function showformadd()
     {
         $this->show_table = false;
-        
+
     }
     
 
