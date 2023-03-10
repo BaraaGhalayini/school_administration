@@ -7,6 +7,8 @@ return [
     'Processes' => 'Processes',
     'classrooms' => 'Classrooms',
     'Sections' => 'Sections',
+    'Teachers' => 'Teachers',
+    'Students' => 'Students',
 
     'add_alert' => 'Addition completed successfully',
     'edit_alert' => 'The modification was completed successfully',

@@ -26,7 +26,7 @@
                     </li>
                     <!-- menu item chat-->
                     <li>
-                        <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">{{ trans('main_trans.Dashboard') }} </span></a>
+                        <a href="{{ url('/' . $page='Teachers') }}"><i class="ti-comments"></i><span class="right-nav-text">{{ trans('main_trans.Teachers') }} </span></a>
                     </li>
                     <!-- menu item mailbox-->
                     <li>

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Controllers\TeacherController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,6 @@ Route::group(
             return view('dashboard');
         })->name('Home');
 
-
         Route::view('showclasses', 'livewire.ShowClasses' );
 
         Route::view('grades', 'livewire.grades.grades')->name('Grades');
@@ -35,7 +36,12 @@ Route::group(
         Route::view('classrooms', 'livewire.classrooms.classrooms')->name('Classrooms');
 
         Route::view('sections', 'livewire.sections.sections')->name('Sections');
+        
+        // Route::view('Teachers', TeacherController::class )->name('Teachers');
 
+        // Route::get('Teachers', TeacherController::class)->name('Teachers');
+
+        Route::resource('Teachers', TeacherController::class);
 
         Route::get('/testing', function () {
 
