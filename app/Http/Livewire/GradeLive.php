@@ -5,13 +5,21 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Grade;
 
 use Livewire\Component;
-
+use App\Repository\GradeRepositoryInterface;
 
 
 
 class GradeLive extends Component
-{   
+{
 
+    protected $Grade;
+
+    public function mount( GradeRepositoryInterface $Grade ){
+        $this->Grade = $Grade;
+    }
+
+
+    
     public $show_table = true ,
     $name_ar,
     $name_en,
@@ -20,16 +28,20 @@ class GradeLive extends Component
     $updateMode = false;
 
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        $grades = Grade::all();
-        // $grades = DB::table('Grades')->get();
+
+        // $grades =  $this->Grade->getAllGrades()->dd();
+        // $grades =  $this->Grade->getAllGrades();
+        $grades =  Grade::all();
+
         return view('livewire.grades.grade-live' , compact('grades') );
     }
 
+
+
     public function updated($propertyName)
     {
-        // $this->validateOnly($propertyName);
 
         $this->validateOnly($propertyName, [
             'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar',
@@ -40,9 +52,9 @@ class GradeLive extends Component
     public function showformadd()
     {
         $this->show_table = false;
-        
+
     }
-    
+
 
 
     public function Submit_add()
@@ -51,7 +63,7 @@ class GradeLive extends Component
         try{
             $this->validate([
 
-                
+
                 'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar',
                 'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,Name_Grade->en',
             ]);
@@ -81,25 +93,28 @@ class GradeLive extends Component
 
 
     public function showformedit($id)
-    {
-        try{
-            $this->grade_id = $id;
-            $this->show_table = false;
-            $this->updateMode = true;
+    {   
+        return $id;
+        $this->Grade->getAllData_Edit($id)->dd();
 
-            $grade = Grade::where('id',$id)->first();
-
-            $this->name_ar = $grade->getTranslation('Name_Grade', 'ar');
-            $this->name_en = $grade->getTranslation('Name_Grade', 'en');
-            // $this->name_ar = $grade->name_ar;
-            // $this->name_en = $grade->name_en;
-
-            $this->note = $grade->note;
-        }
-
-        catch (\Exception $e) {
-            $this->catchError = $e->getMessage();
-        };
+//        try{
+//            $this->grade_id = $id;
+//            $this->show_table = false;
+//            $this->updateMode = true;
+//
+//            $grade = Grade::where('id',$id)->first();
+//
+//            $this->name_ar = $grade->getTranslation('Name_Grade', 'ar');
+//            $this->name_en = $grade->getTranslation('Name_Grade', 'en');
+//            // $this->name_ar = $grade->name_ar;
+//            // $this->name_en = $grade->name_en;
+//
+//            $this->note = $grade->note;
+//        }
+//
+//        catch (\Exception $e) {
+//            $this->catchError = $e->getMessage();
+//        };
 
     }
 
@@ -130,7 +145,7 @@ class GradeLive extends Component
 
                 session()->flash('edit', trans('main_trans.edit_alert'));
                 return redirect('/grades');
-            }        
+            }
         }
 
         catch (\Exception $e) {
@@ -141,14 +156,14 @@ class GradeLive extends Component
 
     public function delete($id)
     {
-        
+
         Grade::findOrFail($id)->delete();
         session()->flash('delete', trans('main_trans.delete_alert'));
         return redirect('/grades');
 
 
 
-    
+
     }
 
 

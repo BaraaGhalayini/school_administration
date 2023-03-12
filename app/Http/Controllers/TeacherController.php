@@ -32,12 +32,16 @@ class TeacherController extends Controller
     
     public function create()
     {
-        //
+        $specializations = $this->Teacher->Getspecialization();
+        $genders = $this->Teacher->GetGender();
+        return view('Teachers.create',compact('specializations','genders'));
     }
 
     public function store(Request $request)
-    {
-        //
+    {   
+        
+        // return $request;
+        return $this->Teacher->StoreTeachers($request);
     }
 
     
@@ -50,7 +54,7 @@ class TeacherController extends Controller
 
     public function edit(Teacher $teacher)
     {
-        //
+    
     }
 
     public function update(Request $request, Teacher $teacher)

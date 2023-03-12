@@ -9,10 +9,10 @@ use Spatie\Translatable\HasTranslations;
 class Teacher extends Model
 {
     use HasFactory;
+    protected $guarded=[];
 
     use HasTranslations;
 
     public $translatable = ['Name'];
-
 
 }

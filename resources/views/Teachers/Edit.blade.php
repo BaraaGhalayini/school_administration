@@ -31,8 +31,8 @@
                         <div class="col-md-12">
                             <br>
                             <form action="{{route('Teachers.update','test')}}" method="post">
-                             {{method_field('patch')}}
-                             @csrf
+                                {{method_field('patch')}}
+                            @csrf
                             <div class="form-row">
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Email')}}</label>

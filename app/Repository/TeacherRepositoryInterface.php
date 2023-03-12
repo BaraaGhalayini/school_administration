@@ -9,19 +9,19 @@ Interface TeacherRepositoryInterface {
     public function getAllTeachers();
 
     // Get specialization
-    // public function getSpecialization();
+    public function getSpecialization();
 
     // Get Gender
-    // public function getGender();
+    public function getGender();
 
     // StoreTeachers
-    // public function storeTeachers($request);
+    public function storeTeachers($request);
 
     // StoreTeachers
-    // public function editTeachers($id);
+    public function editTeachers($id);
 
     // UpdateTeachers.
-    // public function updateTeachers($request);
+    public function updateTeachers($request);
 
     // DeleteTeachers
     // public function deleteTeachers($request);
