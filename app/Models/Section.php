@@ -33,5 +33,10 @@ class Section extends Model
     }
     
 
+    public function GetTeacher(): BelongsToMany
+    {
+        return $this->belongsToMany(Teacher::class, 'teacher_section');
+    }
+
 
 }

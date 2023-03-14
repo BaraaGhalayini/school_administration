@@ -40,9 +40,13 @@ Route::group(
         // Route::view('Teachers', TeacherController::class )->name('Teachers');
 
         // Route::get('Teachers', TeacherController::class)->name('Teachers');
-
+        
         Route::resource('Teachers', TeacherController::class);
 
+        Route::get('Teachers.store',[TeacherController::class, 'store']);
+
+        Route::get('/Teachers/edit/{id}',[TeacherController::class, 'edit']);
+        
         Route::get('/testing', function () {
 
             // $users  =  loop::all() ;

@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Livewire;
+use App\Repository\TeacherRepositoryInterface;
 use Illuminate\Support\Facades\DB;
-use App\Models\Grade;
 
 use Livewire\Component;
-use App\Repository\GradeRepositoryInterface;
 
+use App\Models\Grade;
+use App\Repository\GradeRepository;
+use App\Repository\GradeRepositoryInterface;
 
 
 class GradeLive extends Component
@@ -17,9 +19,12 @@ class GradeLive extends Component
     public function mount( GradeRepositoryInterface $Grade ){
         $this->Grade = $Grade;
     }
+//    public function __construct( GradeRepositoryInterface  $Grade)
+//    {
+//      $this->Grade = $Grade;
+//    }
 
 
-    
     public $show_table = true ,
     $name_ar,
     $name_en,
@@ -28,15 +33,16 @@ class GradeLive extends Component
     $updateMode = false;
 
 
-    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function render(GradeRepositoryInterface $Grade): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-
+        // $grades = $this->Grade->getAllGrades();
         // $grades =  $this->Grade->getAllGrades()->dd();
-        // $grades =  $this->Grade->getAllGrades();
         $grades =  Grade::all();
 
         return view('livewire.grades.grade-live' , compact('grades') );
     }
+
+
 
 
 
@@ -49,7 +55,7 @@ class GradeLive extends Component
         ]);
     }
 
-    public function showformadd()
+    public function showformadd( )
     {
         $this->show_table = false;
 
@@ -92,35 +98,35 @@ class GradeLive extends Component
     }
 
 
-    public function showformedit($id)
-    {   
-        return $id;
-        $this->Grade->getAllData_Edit($id)->dd();
+    public function showformedit( $id )
+    {
 
-//        try{
-//            $this->grade_id = $id;
-//            $this->show_table = false;
-//            $this->updateMode = true;
-//
-//            $grade = Grade::where('id',$id)->first();
-//
-//            $this->name_ar = $grade->getTranslation('Name_Grade', 'ar');
-//            $this->name_en = $grade->getTranslation('Name_Grade', 'en');
-//            // $this->name_ar = $grade->name_ar;
-//            // $this->name_en = $grade->name_en;
-//
-//            $this->note = $grade->note;
-//        }
-//
-//        catch (\Exception $e) {
-//            $this->catchError = $e->getMessage();
-//        };
+        // $this->Grade->getAllData_Edit($id);
+
+    try{
+        $this->grade_id = $id;
+        $this->show_table = false;
+        $this->updateMode = true;
+
+        $grade = Grade::where('id',$id)->first();
+
+        $this->name_ar = $grade->getTranslation('Name_Grade', 'ar');
+        $this->name_en = $grade->getTranslation('Name_Grade', 'en');
+        // $this->name_ar = $grade->name_ar;
+        // $this->name_en = $grade->name_en;
+
+        $this->note = $grade->note;
+    }
+
+    catch (\Exception $e) {
+        $this->catchError = $e->getMessage();
+    };
 
     }
 
 
 
-    public function Submit_edit()
+    public function Submit_edit(GradeRepositoryInterface $Grade)
     {
 
         try{
@@ -154,7 +160,7 @@ class GradeLive extends Component
     }
 
 
-    public function delete($id)
+    public function delete($id , GradeRepositoryInterface $Grade): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
     {
 
         Grade::findOrFail($id)->delete();

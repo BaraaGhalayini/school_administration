@@ -18,6 +18,10 @@ return [
     'edit' => 'Edit',
     'delete' => 'Delete',
 
+
+    'Choose'=>'Choose',
+
+
 ];
 
 ?>

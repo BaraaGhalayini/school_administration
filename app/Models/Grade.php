@@ -17,16 +17,18 @@ class Grade extends Model
 
     protected $guarded=[];
 
-    
+
     //للترجمة عمود واحد
     use HasTranslations;
 
     public $translatable = ['Name_Grade'];
 
 
+
+
     public function Sections(): HasMany
     {
         return $this->hasMany(Section::class, 'Grade_id', 'id');
     }
-    
+
 }

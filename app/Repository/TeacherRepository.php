@@ -10,12 +10,12 @@ use App\Models\Gender;
 
 class TeacherRepository implements TeacherRepositoryInterface {
 
-    public function getAllTeachers(): \Illuminate\Database\Eloquent\Collection
+    public function GetAllTeachers(): \Illuminate\Database\Eloquent\Collection
     {
         return Teacher::all();
     }
 
-    public function GetSpecialization(): \Illuminate\Database\Eloquent\Collection
+    public function Getspecialization(): \Illuminate\Database\Eloquent\Collection
     {
         return Specialization::all();
     }
@@ -25,7 +25,7 @@ class TeacherRepository implements TeacherRepositoryInterface {
         return Gender::all();
     }
 
-    public function storeTeachers($request): \Illuminate\Http\RedirectResponse
+    public function StoreTeachers($request): \Illuminate\Http\RedirectResponse
     {
         try {
             Teacher::create([
@@ -40,7 +40,6 @@ class TeacherRepository implements TeacherRepositoryInterface {
                 'Gender_id' => $request->Gender_id,
                 'Joining_Date' => $request->Joining_Date,
                 'Address' => $request->Address,
-
             ]);
 
 
@@ -52,17 +51,14 @@ class TeacherRepository implements TeacherRepositoryInterface {
         catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-
-
-
     }
 
 
-    public function editTeachers($id){
+    public function EditTeachers($id){
         return Teacher::findOrFail($id);
     }
 
-    public function updateTeachers($request){
+    public function UpdateTeachers($request){
         try {
             $Teachers = Teacher::findOrFail($request->id);
             $Teachers->Email = $request->Email;
@@ -73,7 +69,8 @@ class TeacherRepository implements TeacherRepositoryInterface {
             $Teachers->Joining_Date = $request->Joining_Date;
             $Teachers->Address = $request->Address;
             $Teachers->save();
-            toastr()->success(trans('messages.Update'));
+            // toastr()->success(trans('messages.Update'));
+            session()->flash('edit', trans('main_trans.edit_alert'));
             return redirect()->route('Teachers.index');
         }
         catch (Exception $e) {
@@ -81,5 +78,12 @@ class TeacherRepository implements TeacherRepositoryInterface {
         }
     }
 
+
+    public function DeleteTeachers($request)
+    {
+        Teacher::findOrFail($request->id)->delete();
+        session()->flash('delete', trans('main_trans.delete_alert'));
+        return redirect()->route('Teachers.index');
+    }
 
 }

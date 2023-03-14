@@ -72,7 +72,7 @@
                                 <div class="form-group col">
                                     <label for="inputCity">{{trans('Teacher_trans.specialization')}}</label>
                                     <select class="custom-select my-1 mr-sm-2" name="Specialization_id">
-                                        <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
+                                        <option selected disabled>{{trans('main_trans.Choose')}}...</option>
                                         @foreach($specializations as $specialization)
                                             <option value="{{$specialization->id}}">{{$specialization->Name}}</option>
                                         @endforeach
@@ -84,7 +84,7 @@
                                 <div class="form-group col">
                                     <label for="inputState">{{trans('Teacher_trans.Gender')}}</label>
                                     <select class="custom-select my-1 mr-sm-2" name="Gender_id">
-                                        <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
+                                        <option selected disabled>{{trans('main_trans.Choose')}}...</option>
                                         @foreach($genders as $gender)
                                             <option value="{{$gender->id}}">{{$gender->Name}}</option>
                                         @endforeach
@@ -117,7 +117,7 @@
                                 @enderror
                             </div>
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Parent_trans.Next')}}</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('main_trans.add')}}</button>
                     </form>
                         </div>
                     </div>

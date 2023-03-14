@@ -14,4 +14,7 @@ return [
     'Joining_Date'=>'تاريخ التعين',
     'Address'=>'العنوان',
 
+
+
+
 ];

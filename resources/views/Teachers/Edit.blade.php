@@ -27,6 +27,7 @@
                             </button>
                         </div>
                     @endif
+                    
                     <div class="col-xs-12">
                         <div class="col-md-12">
                             <br>
@@ -36,7 +37,7 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Email')}}</label>
-                                    <input type="hidden" value="{{$Teachers->id}}" name="id">
+                                    <input type="text" value="{{$Teachers->id}}" name="id">
                                     <input type="email" name="Email" value="{{$Teachers->Email}}" class="form-control">
                                     @error('Email')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -51,7 +52,6 @@
                                 </div>
                             </div>
                             <br>
-
 
                             <div class="form-row">
                                 <div class="col">
@@ -74,7 +74,7 @@
                                 <div class="form-group col">
                                     <label for="inputCity">{{trans('Teacher_trans.specialization')}}</label>
                                     <select class="custom-select my-1 mr-sm-2" name="Specialization_id">
-                                        <option value="{{$Teachers->Specialization_id}}">{{$Teachers->specializations->Name}}</option>
+                                        <option value="{{$Teachers->Specialization_id}}">{{$Teachers->GetSpecialization->Name}}</option>
                                         @foreach($specializations as $specialization)
                                             <option value="{{$specialization->id}}">{{$specialization->Name}}</option>
                                         @endforeach
@@ -86,7 +86,7 @@
                                 <div class="form-group col">
                                     <label for="inputState">{{trans('Teacher_trans.Gender')}}</label>
                                     <select class="custom-select my-1 mr-sm-2" name="Gender_id">
-                                        <option value="{{$Teachers->Gender_id}}">{{$Teachers->genders->Name}}</option>
+                                        <option value="{{$Teachers->Gender_id}}">{{$Teachers->GetGender->Name}}</option>
                                         @foreach($genders as $gender)
                                             <option value="{{$gender->id}}">{{$gender->Name}}</option>
                                         @endforeach
@@ -114,13 +114,13 @@
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">{{trans('Teacher_trans.Address')}}</label>
                                 <textarea class="form-control" name="Address"
-                                          id="exampleFormControlTextarea1" rows="4">{{$Teachers->Address}}</textarea>
+                                        id="exampleFormControlTextarea1" rows="4">{{$Teachers->Address}}</textarea>
                                 @error('Address')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Parent_trans.Next')}}</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('main_trans.edit')}}</button>
                     </form>
                         </div>
                     </div>
