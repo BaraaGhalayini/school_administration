@@ -59,7 +59,7 @@
                                                         {{csrf_field()}}
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">{{ trans('Teacher_trans.Delete_Teacher') }}</h5>
+                                                            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">{{ trans('main_trans.Delete_Config') }}</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -71,9 +71,9 @@
                                                         <div class="modal-footer">
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">{{ trans('My_Classes_trans.Close') }}</button>
+                                                                        data-dismiss="modal">{{ trans('main_trans.Close') }}</button>
                                                                 <button type="submit"
-                                                                        class="btn btn-danger">{{ trans('My_Classes_trans.submit') }}</button>
+                                                                        class="btn btn-danger">{{ trans('main_trans.delete') }}</button>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\Classroom;
 use App\Models\Grade;
 
+//Don't use Repository
 
 class ClassroomLive extends Component
 {   

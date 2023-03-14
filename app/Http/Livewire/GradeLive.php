@@ -35,9 +35,9 @@ class GradeLive extends Component
 
     public function render(GradeRepositoryInterface $Grade): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        // $grades = $this->Grade->getAllGrades();
+        $grades = $this->Grade->getAllGrades();
         // $grades =  $this->Grade->getAllGrades()->dd();
-        $grades =  Grade::all();
+        // $grades =  Grade::all();
 
         return view('livewire.grades.grade-live' , compact('grades') );
     }
@@ -98,30 +98,9 @@ class GradeLive extends Component
     }
 
 
-    public function showformedit( $id )
+    public function showformedit( $id  , GradeRepositoryInterface $Grade )
     {
-
-        // $this->Grade->getAllData_Edit($id);
-
-    try{
-        $this->grade_id = $id;
-        $this->show_table = false;
-        $this->updateMode = true;
-
-        $grade = Grade::where('id',$id)->first();
-
-        $this->name_ar = $grade->getTranslation('Name_Grade', 'ar');
-        $this->name_en = $grade->getTranslation('Name_Grade', 'en');
-        // $this->name_ar = $grade->name_ar;
-        // $this->name_en = $grade->name_en;
-
-        $this->note = $grade->note;
-    }
-
-    catch (\Exception $e) {
-        $this->catchError = $e->getMessage();
-    };
-
+        $Grade->getAllData_Edit($id);
     }
 
 

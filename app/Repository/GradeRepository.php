@@ -7,13 +7,14 @@ use App\Models\Grade;
 class GradeRepository implements GradeRepositoryInterface {
 
 
-    // private $grade_id;
+    private $grade_id;
 
-    // private bool $show_table;
-    // private bool $updateMode;
-    // private $name_ar;
-    // private $name_en;
-    // private $note;
+    private bool $show_table;
+    private bool $updateMode;
+    private $name_ar;
+    private $name_en;
+    private $note;
+    private $id;
 
     
     public function getAllGrades(): \Illuminate\Database\Eloquent\Collection
@@ -27,19 +28,19 @@ class GradeRepository implements GradeRepositoryInterface {
         ]);
     }
 
-    public function getAllData_Edit($id){
+    public function getAllData_Edit($id , GradeRepositoryInterface $Grade ){
         try{
-            $this->grade_id = $id;
-            $this->show_table = false;
-            $this->updateMode = true;
+            $Grade->grade_id = $id;
+            $Grade->show_table = false;
+            $Grade->updateMode = true;
             $grade = Grade::where('id',$id)->first();
 
-            $this->name_ar = $grade->getTranslation('Name_Grade', 'ar');
-            $this->name_en = $grade->getTranslation('Name_Grade', 'en');
-            $this->note = $grade->note;
+            $Grade->name_ar = $grade->getTranslation('Name_Grade', 'ar');
+            $Grade->name_en = $grade->getTranslation('Name_Grade', 'en');
+            $Grade->note = $grade->note;
         }
         catch (\Exception $e) {
-            $this->catchError = $e->getMessage();
+            $Grade->catchError = $e->getMessage();
 
         };
     }

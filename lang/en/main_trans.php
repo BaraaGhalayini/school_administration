@@ -20,6 +20,9 @@ return [
 
 
     'Choose'=>'Choose',
+    'Close'=>'Close',
+
+    'Delete_Config'=>'Are Sure Of The Deleting Process?',
 
 
 ];

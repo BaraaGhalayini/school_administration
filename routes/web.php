@@ -46,6 +46,8 @@ Route::group(
         Route::get('Teachers.store',[TeacherController::class, 'store']);
 
         Route::get('/Teachers/edit/{id}',[TeacherController::class, 'edit']);
+
+        Route::get('/Teachers/delete/{id}',[TeacherController::class, 'destroy']);
         
         Route::get('/testing', function () {
 
