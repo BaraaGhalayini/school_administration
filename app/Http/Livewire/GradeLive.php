@@ -16,15 +16,6 @@ class GradeLive extends Component
 
     protected $Grade;
 
-    public function mount( GradeRepositoryInterface $Grade ){
-        $this->Grade = $Grade;
-    }
-//    public function __construct( GradeRepositoryInterface  $Grade)
-//    {
-//      $this->Grade = $Grade;
-//    }
-
-
     public $show_table = true ,
     $name_ar,
     $name_en,
@@ -33,122 +24,54 @@ class GradeLive extends Component
     $updateMode = false;
 
 
-    public function render(GradeRepositoryInterface $Grade): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
-    {
-        $grades = $this->Grade->getAllGrades();
-        // $grades =  $this->Grade->getAllGrades()->dd();
-        // $grades =  Grade::all();
+    public function mount( GradeRepositoryInterface $Grade ){
+        $this->Grade = $Grade;
+    }
 
+    public function render(GradeRepositoryInterface $Grade)
+    {
+        $grades =  $Grade->getAllGrades();
         return view('livewire.grades.grade-live' , compact('grades') );
     }
 
-
-
-
-
+    //تحديث دوري
     public function updated($propertyName)
     {
-
         $this->validateOnly($propertyName, [
             'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar',
             'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,Name_Grade->en',
         ]);
     }
 
+    //Show Create Form
     public function showformadd( )
     {
         $this->show_table = false;
-
     }
 
-
-
-    public function Submit_add()
+    //Create
+    public function Submit_add( GradeRepositoryInterface $Grade)
     {
-
-        try{
-            $this->validate([
-
-
-                'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar',
-                'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,Name_Grade->en',
-            ]);
-
-            // Grade::create([
-            //     'name_ar' => $this->name_ar,
-            //     'name_en' => $this->name_en,
-            // ]);
-
-            Grade::create([
-                'Name_Grade' => [
-                    'ar' => $this->name_ar,
-                    'en' => $this->name_en,
-                ],
-                'note' => $this->note,
-            ]);
-
-
-            session()->flash('add', trans('main_trans.add_alert'));
-            return redirect('/grades');
-        }
-
-        catch (\Exception $e) {
-            $this->catchError = $e->getMessage();
-        };
+        $Grade->Create_Grade();
     }
 
-
+    //Show Edit Form
     public function showformedit( $id  , GradeRepositoryInterface $Grade )
     {
         $Grade->getAllData_Edit($id);
     }
 
 
-
+    //Edit
     public function Submit_edit(GradeRepositoryInterface $Grade)
     {
-
-        try{
-            $id = $this->grade_id;
-
-            if ($id){
-                $this->validate([
-
-                    'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar,'.$id,
-                    'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,Name_Grade->en,'.$id,
-                ]);
-
-                $Grade = Grade::find($id);
-
-                $Grade->update([
-                    'Name_Grade' => [
-                        'ar' => $this->name_ar,
-                        'en' => $this->name_en,
-                    ],
-                    'note' => $this->note,
-                ]);
-
-                session()->flash('edit', trans('main_trans.edit_alert'));
-                return redirect('/grades');
-            }
-        }
-
-        catch (\Exception $e) {
-            $this->catchError = $e->getMessage();
-        };
+        $Grade->Submit_Edit_Grade($id);
     }
 
-
-    public function delete($id , GradeRepositoryInterface $Grade): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    //Delete
+    public function delete($id , GradeRepositoryInterface $Grade)
     {
-
-        Grade::findOrFail($id)->delete();
-        session()->flash('delete', trans('main_trans.delete_alert'));
-        return redirect('/grades');
-
-
-
-
+        $Grade->Delete_Grade($id);
     }
 
 
