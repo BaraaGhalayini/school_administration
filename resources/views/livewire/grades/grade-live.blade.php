@@ -23,7 +23,7 @@
                     <td>
                         <button wire:click="ShowFormEdit({{ $grade->id }})" title="{{ trans('main_trans.edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
                         {{-- <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $grade->id }})" title="{{ trans('main_trans.delete') }}"><i class="fa fa-trash"></i></button> --}}
-                        <button type="button" class="btn btn-danger btn-sm" wire:click="Confirm_Delete" data-target="#delete({{ $grade->id }})" title="{{ trans('main_trans.delete') }}"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $grade->id }})" data-target="#delete({{ $grade->id }})" title="{{ trans('main_trans.delete') }}"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
                 <!--  Confirm_Delete -->

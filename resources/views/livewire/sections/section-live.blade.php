@@ -35,8 +35,7 @@
                                                             
                                                             <td>{{ $loop->index + 1 }}</td>
                                                             <td>{{ $list_Sections->Name_Section }} </td>
-                                                            <td>{{ $list_Sections->Classrooms->Name_Class }} 
-                                                            </td>
+                                                            <td>{{ $list_Sections->Classrooms->Name_Class }} </td>
                                                             <td>
                                                                 @if (@$list_Sections->Status === 1)
                                                                     <label

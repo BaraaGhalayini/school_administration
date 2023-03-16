@@ -35,14 +35,14 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Email')}}</label>
-                                    <input type="email" name="Email" class="form-control">
+                                    <input type="email"  value="{{ old('Email') }}" name="Email" class="form-control" required>
                                     @error('Email')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Password')}}</label>
-                                    <input type="password" name="Password" class="form-control">
+                                    <input type="password" value="{{ old('Password') }}" name="Password" class="form-control" required>
                                     @error('Password')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -54,14 +54,14 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Name_ar')}}</label>
-                                    <input type="text" name="Name_ar" class="form-control">
+                                    <input type="text" value="{{ old('Name_ar') }}"   name="Name_ar" class="form-control" required>
                                     @error('Name_ar')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Name_en')}}</label>
-                                    <input type="text" name="Name_en" class="form-control">
+                                    <input type="text"  value="{{ old('Name_en') }}" name="Name_en" class="form-control" required>
                                     @error('Name_en')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -71,10 +71,10 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="inputCity">{{trans('Teacher_trans.specialization')}}</label>
-                                    <select class="custom-select my-1 mr-sm-2" name="Specialization_id">
+                                    <select class="custom-select my-1 mr-sm-2" name="Specialization_id" >
                                         <option selected disabled>{{trans('main_trans.Choose')}}...</option>
                                         @foreach($specializations as $specialization)
-                                            <option value="{{$specialization->id}}">{{$specialization->Name}}</option>
+                                            <option  value="{{$specialization->id}}" >{{$specialization->Name}}</option>
                                         @endforeach
                                     </select>
                                     @error('Specialization_id')
@@ -83,10 +83,10 @@
                                 </div>
                                 <div class="form-group col">
                                     <label for="inputState">{{trans('Teacher_trans.Gender')}}</label>
-                                    <select class="custom-select my-1 mr-sm-2" name="Gender_id">
+                                    <select class="custom-select my-1 mr-sm-2" name="Gender_id" >
                                         <option selected disabled>{{trans('main_trans.Choose')}}...</option>
                                         @foreach($genders as $gender)
-                                            <option value="{{$gender->id}}">{{$gender->Name}}</option>
+                                            <option value="{{$gender->id}}" >{{$gender->Name}}</option>
                                         @endforeach
                                     </select>
                                     @error('Gender_id')
@@ -100,7 +100,7 @@
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Joining_Date')}}</label>
                                     <div class='input-group date'>
-                                        <input class="form-control" type="text"  id="datepicker-action" name="Joining_Date" data-date-format="yyyy-mm-dd"  required>
+                                        <input class="form-control" value="{{ old('Joining_Date') }}" type="text"  id="datepicker-action" name="Joining_Date" data-date-format="yyyy-mm-dd"  required>
                                     </div>
                                     @error('Joining_Date')
                                     <div class="alert alert-danger">{{ $message }}</div>

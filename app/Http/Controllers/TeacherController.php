@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\TeacherRequest;
+
 
 use App\Models\Teacher;
 use App\Repository\TeacherRepositoryInterface;
-
 
 
 class TeacherController extends Controller
@@ -31,13 +32,17 @@ class TeacherController extends Controller
     {
         $specializations = $this->Teacher->Getspecialization();
         $genders = $this->Teacher->GetGender();
+        // dd($genders);
         return view('Teachers.create',compact('specializations','genders'));
     }
 
     public function store(Request $request)
     {
         // return $request;
-        return $this->Teacher->StoreTeachers($request);
+        // $this->validate();
+        // dd($request);
+        // $this->validated(); //يتم عمل تحقق عبر الملف الخاص
+        return $this->Teacher->StoreTeacher($request);
     }
 
 
@@ -48,8 +53,10 @@ class TeacherController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(TeacherRequest $id)
     {
+        // $this->validate($id);
+        $this->validated($id);
         $Teachers = $this->Teacher->EditTeachers($id);
         $specializations = $this->Teacher->Getspecialization();
         $genders = $this->Teacher->GetGender();

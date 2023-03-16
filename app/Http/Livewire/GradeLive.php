@@ -137,9 +137,6 @@ class GradeLive extends Component
         
         $Delete_Data = $Grade->Delete_Data($id);
         $this->reset();
-
-
-
     }
 
 

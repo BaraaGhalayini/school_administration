@@ -14,7 +14,7 @@ Interface TeacherRepositoryInterface {
     public function GetGender();
 
     // StoreTeachers
-    public function StoreTeachers($request);
+    public function StoreTeacher($request);
 
     // StoreTeachers
     public function EditTeachers($id);

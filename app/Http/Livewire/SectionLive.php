@@ -51,9 +51,11 @@ class SectionLive extends Component
     {
         // $this->validateOnly($propertyName);
 
+        // dd($this->name_grade);
+        
         $this->validateOnly($propertyName, [
             'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Sections,Name_Section->ar',
-            'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en',
+            'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en',   
             'name_grade' => 'required',
             'name_class' => 'required',
 
@@ -132,14 +134,10 @@ class SectionLive extends Component
             $this->name_grade = $section->Grade_id;
             $this->name_class = $section->Class_id;
             $this->Status = $section->Status;
-
-
         }
-
         catch (\Exception $e) {
             $this->catchError = $e->getMessage();
         };
-
     }
     
 
@@ -149,29 +147,29 @@ class SectionLive extends Component
         
         try{
             $id = $this->section_id;
+            $id_grade = $this->name_grade;
+            // dd($id_grade);
 
             if ($id){
-                $this->validate([
+                $test = $this->validate([
 
-                    'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Sections,Name_Section->ar,'.$id,
-                    'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en,'.$id,
+                    // 'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Sections,Name_Section->ar,'.$id .',Grade_id,'.$id_grade,
+                    // 'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en,'.$id.',Grade_id,'.$id_grade,
+                    'name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Sections,Name_Section->ar,'.$id ,
+                    'name_en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Sections,Name_Section->en,'.$id ,
                     'name_grade' => 'required',
                     'name_class' => 'required',
                 ]);
 
                 $section = Section::find($id);
-
                 // $Status = $this->Status;
-
                 // $Status = 1 ? 1 : 2;
 
                 if ($this->Status === 1) {
                     $Status = 1 ;
                 }else{
-
                     $Status = 2 ;
                 }
-
 
                 $section->update([
                     'Name_Section' => [
@@ -202,14 +200,5 @@ class SectionLive extends Component
         return redirect()->route('Sections');
 
     }
-
-
-
-
-
-
-
-
-
 
 }

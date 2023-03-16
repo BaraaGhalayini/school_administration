@@ -25,7 +25,7 @@ class TeacherRepository implements TeacherRepositoryInterface {
         return Gender::all();
     }
 
-    public function StoreTeachers($request): \Illuminate\Http\RedirectResponse
+    public function StoreTeacher($request): \Illuminate\Http\RedirectResponse
     {
         try {
             Teacher::create([
@@ -42,10 +42,9 @@ class TeacherRepository implements TeacherRepositoryInterface {
                 'Address' => $request->Address,
             ]);
 
-
             // toastr()->success(trans('messages.success'));
             session()->flash('add', trans('main_trans.add_alert'));
-            return redirect()->route('Teachers');
+            return redirect()->route('Teachers.index');
 
         }
         catch (Exception $e) {

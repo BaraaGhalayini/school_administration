@@ -30,6 +30,7 @@
                                             <th>{{trans('Teacher_trans.Name_Teacher')}}</th>
                                             <th>{{trans('Teacher_trans.Gender')}}</th>
                                             <th>{{trans('Teacher_trans.Joining_Date')}}</th>
+                                            <th>{{trans('Teacher_trans.Email')}}</th>
                                             <th>{{trans('Teacher_trans.specialization')}}</th>
                                             <th>العمليات</th>
                                         </tr>
@@ -39,9 +40,8 @@
                                             <tr>
                                                 <td>{{ $loop->index + 1 }}</td>
                                                 <td>{{$Teacher->Name}}</td>
-                                                {{-- <td>{{$Teacher->Name}}</td> --}}
                                                 <td>{{$Teacher->GetGender->Name}}</td>
-                                                {{-- <td>{{$Teacher->Joining_Date}}</td> --}}
+                                                <td>{{$Teacher->Email}}</td>
                                                 <td>{{$Teacher->Joining_Date}}</td>
                                                 <td>{{$Teacher->GetSpecialization->Name}}</td>
                                                 <td>
