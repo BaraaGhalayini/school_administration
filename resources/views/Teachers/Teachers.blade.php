@@ -35,17 +35,15 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i = 0; ?>
                                         @foreach($Teachers as $Teacher)
                                             <tr>
-                                            <?php $i++; ?>
-                                            <td>{{ $i }}</td>
-                                            <td>{{$Teacher->Name}}</td>
-                                            {{-- <td>{{$Teacher->Name}}</td> --}}
-                                            <td>{{$Teacher->GetGender->Name}}</td>
-                                            {{-- <td>{{$Teacher->Joining_Date}}</td> --}}
-                                            <td>{{$Teacher->Joining_Date}}</td>
-                                            <td>{{$Teacher->GetSpecialization->Name}}</td>
+                                                <td>{{ $loop->index + 1 }}</td>
+                                                <td>{{$Teacher->Name}}</td>
+                                                {{-- <td>{{$Teacher->Name}}</td> --}}
+                                                <td>{{$Teacher->GetGender->Name}}</td>
+                                                {{-- <td>{{$Teacher->Joining_Date}}</td> --}}
+                                                <td>{{$Teacher->Joining_Date}}</td>
+                                                <td>{{$Teacher->GetSpecialization->Name}}</td>
                                                 <td>
                                                     <a href="{{route('Teachers.edit',$Teacher->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Teacher{{ $Teacher->id }}" title="{{ trans('Grades_trans.Delete') }}"><i class="fa fa-trash"></i></button>

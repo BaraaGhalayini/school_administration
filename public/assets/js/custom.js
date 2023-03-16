@@ -224,29 +224,29 @@ var $window = $(window),
       DataTable
 *************************/  
 POTENZA.datatables = function () {
-   if ($('#datatable').exists()) {
-       loadScript(plugin_path + 'bootstrap-datatables/jquery.dataTables.min.js', function() {
-       loadScript(plugin_path + 'bootstrap-datatables/dataTables.bootstrap4.min.js', function() {
-      $('#datatable').DataTable();
-     });
-       });
-    }
- };
+  if ($('#datatable').exists()) {
+      loadScript(plugin_path + 'bootstrap-datatables/jquery.dataTables.min.js', function() {
+      loadScript(plugin_path + 'bootstrap-datatables/dataTables.bootstrap4.min.js', function() {
+    $('#datatable').DataTable();
+    });
+      });
+  }
+};
 
 /*********************************
     Wow animation on scroll
 *********************************/
 POTENZA.wowanimation = function () {
-    if ($('.wow').exists()) {
-        var wow = new WOW({
-           animateClass: 'animated',
-           offset: 100,
-           mobile: false
-        });
-       wow.init();
-     }
-  } 
-  
+  if ($('.wow').exists()) {
+      var wow = new WOW({
+          animateClass: 'animated',
+          offset: 100,
+          mobile: false
+      });
+      wow.init();
+    }
+} 
+
 
 /*************************
       select
@@ -882,7 +882,7 @@ var _arr  = {};
       // script.onreadystatechange = callback;
       script.onload = callback;
       // fire the loading
-      body.appendChild(script);
+      // body.appendChild(script);
     } else if (callback) {
       callback();
     }

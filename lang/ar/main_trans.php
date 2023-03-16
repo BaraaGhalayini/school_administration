@@ -7,8 +7,8 @@ return [
     'Dashboard' => 'الرئيسية',
     'Processes' => 'العمليات',
     'Grades' => 'المراحل الدراسية',
-    'Classrooms' => 'الفصول الدراسية',
-    'Sections' => 'الأقسام الدراسية',
+    'Classrooms' => 'الصفوف',
+    'Sections' => 'الأقسام',
     'Teachers' => 'المعلمين',
     'Students' => 'الطلاب',
 

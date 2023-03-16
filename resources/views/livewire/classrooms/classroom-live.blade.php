@@ -14,11 +14,9 @@
             </tr>
             </thead>
             <tbody>
-            <?php $i = 0;  ?>
             @foreach ($classrooms as $classroom) 
                 <tr>
-                    <?php $i++; ?>
-                    <td>{{ $i }}</td>
+                    <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $classroom->Name_Class }}</td>
                     <td>{{ $classroom->Grades->Name_Grade }}</td>
 

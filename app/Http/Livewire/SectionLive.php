@@ -12,7 +12,7 @@ class SectionLive extends Component
 {
 
     public $show_table = true ,
-    $Grades = [1 ,2 ,3],
+    // $Grades = [1 ,2 ,3],
     $Status_Defulte = 1,
     $Status,
     $name_ar,

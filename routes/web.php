@@ -58,6 +58,9 @@ Route::group(
         });
 
 
+        Route::view('TestTry', 'livewire.test' )->name('TestTry');
+
+
 });
 
 

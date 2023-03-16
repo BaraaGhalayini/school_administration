@@ -14,21 +14,21 @@
             </tr>
             </thead>
             <tbody>
-            <?php $i = 0;  ?>
-            @foreach ($grades as $grade)
+            @foreach ($grades1 as $grade)
                 <tr>
-                    <?php $i++; ?>
-                    <td>{{ $i }}</td>
+                    <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $grade->Name_Grade }}</td>
                     <td>{{ $grade->note }}</td>
 
                     <td>
-                        <button wire:click="showformedit({{ $grade->id }})" title="{{ trans('main_trans.edit') }}"
-                                class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
-                        {{-- <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $my_parent->id }})" title="{{ trans('Grades_trans.Delete') }}"><i class="fa fa-trash"></i></button> --}}
-                        <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $grade->id }})" title="{{ trans('main_trans.delete') }}"><i class="fa fa-trash"></i></button>
+                        <button wire:click="ShowFormEdit({{ $grade->id }})" title="{{ trans('main_trans.edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
+                        {{-- <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $grade->id }})" title="{{ trans('main_trans.delete') }}"><i class="fa fa-trash"></i></button> --}}
+                        <button type="button" class="btn btn-danger btn-sm" wire:click="Confirm_Delete" data-target="#delete({{ $grade->id }})" title="{{ trans('main_trans.delete') }}"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
+                <!--  Confirm_Delete -->
+                {{-- Confirm_Delete --}}
+                @include('livewire.grades.Confirm_Delete')
             @endforeach
         </table>
     </div>

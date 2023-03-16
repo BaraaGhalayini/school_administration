@@ -5,14 +5,14 @@
             <div class="form-row">
                 <div class="col">
                     <label for="title">{{trans('grade_trans.name_ar')}}</label>
-                    <input type="text" wire:model="name_ar"  class="form-control">
+                    <input type="text" wire:model.lazy="name_ar"  class="form-control">
                     @error('name_ar')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="col">
                     <label for="title">{{trans('grade_trans.name_en')}}</label>
-                    <input type="text" wire:model="name_en" class="form-control" >
+                    <input type="text" wire:model.lazy="name_en" class="form-control" >
                     @error('name_en')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -22,7 +22,7 @@
             <div class="form-row">
                 <div class="col">
                     <label for="title">{{trans('grade_trans.note')}}</label>
-                    <input type="text" wire:model="note" class="form-control" >
+                    <input type="text" wire:model.lazy="note" class="form-control" >
                     @error('note')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

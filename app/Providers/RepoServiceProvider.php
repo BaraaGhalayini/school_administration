@@ -11,6 +11,9 @@ use App\Repository\TeacherRepositoryInterface;
 use App\Repository\GradeRepository;
 use App\Repository\GradeRepositoryInterface;
 
+use App\Repository\TestRepository;
+use App\Repository\TestRepositoryInterface;
+
 
 class RepoServiceProvider extends ServiceProvider
 {
@@ -18,6 +21,7 @@ class RepoServiceProvider extends ServiceProvider
     {
         $this->app->bind(TeacherRepositoryInterface::class, TeacherRepository::class);
         $this->app->bind(GradeRepositoryInterface::class, GradeRepository::class);
+        $this->app->bind(TestRepositoryInterface::class, TestRepository::class);
     }
 
 

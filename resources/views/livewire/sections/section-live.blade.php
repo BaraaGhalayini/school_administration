@@ -30,12 +30,10 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php $i = 0; ?>
                                                     @foreach ($grade->Sections as $list_Sections)
                                                         <tr>
                                                             
-                                                            <?php $i++; ?>
-                                                            <td>{{ $i }}</td>
+                                                            <td>{{ $loop->index + 1 }}</td>
                                                             <td>{{ $list_Sections->Name_Section }} </td>
                                                             <td>{{ $list_Sections->Classrooms->Name_Class }} 
                                                             </td>
