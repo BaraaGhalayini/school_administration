@@ -36,12 +36,12 @@ class TeacherController extends Controller
         return view('Teachers.create',compact('specializations','genders'));
     }
 
-    public function store(Request $request)
+    public function store(TeacherRequest $request)
     {
         // return $request;
         // $this->validate();
         // dd($request);
-        // $this->validated(); //يتم عمل تحقق عبر الملف الخاص
+        $this->validated(); //يتم عمل تحقق عبر الملف الخاص
         return $this->Teacher->StoreTeacher($request);
     }
 

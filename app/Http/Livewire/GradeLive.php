@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Livewire;
-use App\Repository\TeacherRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
 use Livewire\Component;
 
 use App\Models\Grade;
 use App\Models\Classroom;
-use App\Repository\GradeRepository;
+
+
 use App\Repository\GradeRepositoryInterface;
 
 
