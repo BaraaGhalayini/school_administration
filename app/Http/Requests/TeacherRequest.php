@@ -24,15 +24,15 @@ class TeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            'ar' => 'required|string|regex:/^[\p{Arabic} ]+/u|unique:Grades,Name_Grade->ar,',
-            'en' => 'required|string|regex:/^[A-Za-z]+$/i|unique:Grades,Name_Grade->en,',
+            'Name_ar' => 'required|string|regex:/^[\p{Arabic} ]+/u',
+            'Name_en' => 'required|string|regex:/^[A-Za-z]+$/i',
 
             'Email' => 'required|unique:teachers,Email,'. $this->id,
             'Password' => 'required|string|min:8|max:20',
             'Specialization_id' => 'required',
             'Gender_id' => 'required',
             'Joining_Date' => 'required|date|date_format:Y-m-d',
-            // 'Address' => 'required',
+            'Address' => 'required',
         ];
     }
 

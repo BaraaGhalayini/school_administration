@@ -37,7 +37,7 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Email')}}</label>
-                                    <input type="text" value="{{$Teachers->id}}" name="id">
+                                    <input type="hidden" value="{{$Teachers->id}}" name="id">
                                     <input type="email" name="Email" value="{{$Teachers->Email}}" class="form-control">
                                     @error('Email')
                                     <div class="alert alert-danger">{{ $message }}</div>

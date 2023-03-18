@@ -41,7 +41,7 @@ class TeacherController extends Controller
         // return $request;
         // $this->validate();
         // dd($request);
-        $this->validated(); //يتم عمل تحقق عبر الملف الخاص
+        $validated = $request->validated(); //يتم عمل تحقق عبر الملف الخاص
         return $this->Teacher->StoreTeacher($request);
     }
 
@@ -53,18 +53,18 @@ class TeacherController extends Controller
     }
 
 
-    public function edit(TeacherRequest $id)
+    public function edit( $id)
     {
         // $this->validate($id);
-        $this->validated($id);
         $Teachers = $this->Teacher->EditTeachers($id);
         $specializations = $this->Teacher->Getspecialization();
         $genders = $this->Teacher->GetGender();
         return view('Teachers.edit',compact('Teachers','specializations','genders'));        
     }
 
-    public function update(Request $request)
+    public function update(TeacherRequest $request)
     {
+        $request->validated($request);
         return $this->Teacher->UpdateTeachers($request);        
     }
 

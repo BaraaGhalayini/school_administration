@@ -111,7 +111,7 @@
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">{{trans('Teacher_trans.Address')}}</label>
-                                <textarea class="form-control" name="Address" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                <textarea class="form-control" value="{{ old('Name_ar') }}" name="Address" id="exampleFormControlTextarea1" rows="4"></textarea>
                                 @error('Address')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
