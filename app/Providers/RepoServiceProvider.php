@@ -14,7 +14,6 @@ use App\Repository\GradeRepositoryInterface;
 use App\Repository\TestRepository;
 use App\Repository\TestRepositoryInterface;
 
-
 class RepoServiceProvider extends ServiceProvider
 {
     public function register()
@@ -22,8 +21,8 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(TeacherRepositoryInterface::class, TeacherRepository::class);
         $this->app->bind(GradeRepositoryInterface::class, GradeRepository::class);
         $this->app->bind(TestRepositoryInterface::class, TestRepository::class);
+        $this->app->bind(ParentsRepositoryInterface::class, ParentsRepository::class);
     }
-
 
     public function boot()
     {

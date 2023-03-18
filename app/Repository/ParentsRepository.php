@@ -10,4 +10,6 @@ use App\Models\My_Parent;
 class ParentsRepository implements ParentsRepositoryInterface {
 
 
+
+
 }
