@@ -36,6 +36,8 @@ Route::group(
         Route::view('classrooms', 'livewire.classrooms.classrooms')->name('Classrooms');
 
         Route::view('sections', 'livewire.sections.sections')->name('Sections');
+
+        Route::view('parents', 'livewire.parents.parents')->name('parents');
         
         // Route::view('Teachers', TeacherController::class )->name('Teachers');
 

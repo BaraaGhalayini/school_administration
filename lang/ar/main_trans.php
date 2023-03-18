@@ -11,6 +11,7 @@ return [
     'Sections' => 'الأقسام',
     'Teachers' => 'المعلمين',
     'Students' => 'الطلاب',
+    'Parents' => 'اولياء الأمور',
 
     
     'add' => 'اضافة',

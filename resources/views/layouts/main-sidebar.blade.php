@@ -22,7 +22,7 @@
 
                     <!-- menu item todo-->
                     <li>
-                        <a href="{{ route('Sections') }}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ trans('main_trans.Sections') }}</span> </a>
+                        <a href="{{ route('Sections') }}" ><i class="ti-menu-alt"></i><span class="right-nav-text">{{ trans('main_trans.Sections') }}</span> </a>
                     </li>
                     <!-- menu item chat-->
                     <li>
@@ -30,7 +30,7 @@
                     </li>
                     <!-- menu item mailbox-->
                     <li>
-                        <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">{{ trans('main_trans.Dashboard') }}</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
+                        <a href="{{ route('Sections') }}" ><i class="ti-email"></i><span class="right-nav-text">{{ trans('main_trans.Parents') }}</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
                     </li>
                     <!-- menu item Charts-->
                     <li>

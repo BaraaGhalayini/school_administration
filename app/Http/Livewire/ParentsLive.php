@@ -8,7 +8,7 @@ class ParentsLive extends Component
 {
     public function render()
     {
-        return view('livewire.parents-live');
+        return view('livewire.parents.parents-live');
     }
 
 }
