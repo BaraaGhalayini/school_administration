@@ -10,8 +10,6 @@ use Spatie\Translatable\HasTranslations;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo ;
 
-
-
 class Classroom extends Model
 {
     use HasFactory;

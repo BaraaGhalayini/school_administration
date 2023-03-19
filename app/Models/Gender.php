@@ -12,5 +12,4 @@ class Gender extends Model
     use HasTranslations;
     public $translatable = ['Name'];
 
-    
 }

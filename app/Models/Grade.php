@@ -17,7 +17,6 @@ class Grade extends Model
 
     protected $guarded=[];
 
-
     //للترجمة عمود واحد
     use HasTranslations;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 use Livewire\Component;
 
-// use App\Models\Grade;
+use App\Models\Grade;
 // use App\Models\My_Parent;
 // use App\Models\Nationalitie;
 // use App\Models\ParentAttachment;
