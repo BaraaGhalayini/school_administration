@@ -30,7 +30,7 @@
                     </li>
                     <!-- menu item mailbox-->
                     <li>
-                        <a href="{{ route('Sections') }}" ><i class="ti-email"></i><span class="right-nav-text">{{ trans('main_trans.Parents') }}</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
+                        <a href="{{ route('parents') }}" ><i class="ti-email"></i><span class="right-nav-text">{{ trans('main_trans.Parents') }}</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
                     </li>
                     <!-- menu item Charts-->
                     <li>

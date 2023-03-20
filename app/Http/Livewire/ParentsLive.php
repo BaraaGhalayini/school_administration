@@ -4,13 +4,13 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 
 use App\Models\Grade;
-// use App\Models\My_Parent;
-// use App\Models\Nationalitie;
-// use App\Models\ParentAttachment;
-// use App\Models\Religion;
-// use App\Models\Type_Blood;
-// use Illuminate\Support\Facades\Hash;
-// use Livewire\WithFileUploads;
+use App\Models\My_Parent;
+use App\Models\Nationalitie;
+use App\Models\ParentAttachment;
+use App\Models\Religion;
+use App\Models\Blood;
+use Illuminate\Support\Facades\Hash;
+use Livewire\WithFileUploads;
 
 
 use App\Repository\ParentsRepositoryInterface;
@@ -19,9 +19,10 @@ use App\Repository\ParentsRepositoryInterface;
 class ParentsLive extends Component
 {
     use WithFileUploads;
+    
+    protected $Parents;
 
     public $successMessage = '';
-
     public 
         $catchError,
         $updateMode = false,
@@ -47,9 +48,9 @@ class ParentsLive extends Component
         $Address_Mother, $Religion_Mother_id;
 
 
-    public function mount()
+    public function mount(ParentsRepositoryInterface $Parents)
     {
-
+        // $this->Parents = $Parents->getAllParents();
     }
 
     public function updated($propertyName)
@@ -69,9 +70,9 @@ class ParentsLive extends Component
     public function render()
     {
         // return view('livewire.parents.parents-live');
-        return view('livewire.add-parent', [
+        return view('livewire.parents.parents-live', [
             'Nationalities' => Nationalitie::all(),
-            'Type_Bloods' => Type_Blood::all(),
+            'Bloods' => Blood::all(),
             'Religions' => Religion::all(),
             'my_parents' => My_Parent::all(),
         ]);
@@ -86,6 +87,8 @@ class ParentsLive extends Component
     //firstStepSubmit
     public function firstStepSubmit()
     {
+
+        
         $this->validate([
             'Email' => 'required|unique:my__parents,Email,'.$this->id,
             'Password' => 'required',
@@ -124,6 +127,10 @@ class ParentsLive extends Component
     }
 
     public function submitForm(){
+
+        // $SendCreate = $Grade->Create_Data($data);
+
+
         try {
             $My_Parent = new My_Parent();
             // Father_INPUTS
